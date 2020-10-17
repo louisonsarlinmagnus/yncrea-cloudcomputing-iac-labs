@@ -5,12 +5,15 @@ on:
     branches: [ master ]
 
 jobs:
-  my-job:
-    name: My Job
+  deploy:
+    name: Deploy Job
     runs-on: ubuntu-latest
 
     steps:
-      - name: "Configure AWS Credentials" Action For GitHub Actions
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Configure AWS credentials from Test account
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
